@@ -1,0 +1,7 @@
+.card__body {
+  width: 461px;
+  height: 650px;
+  border: 1px solid rgb(220, 220, 220);
+  padding: 25px;
+  border-radius: 10px;
+}
