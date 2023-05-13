@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import fbLogo from '../../assets/images/login/Facebook-logo.png'
 import googleLogo from '../../assets/images/login/google.png'
@@ -8,7 +8,11 @@ import { AuthContext } from '../../providers/AuthProviders';
 import './Login.css'
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const  {signIn, googleSignIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate(); 
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogIn = event => {
         event.preventDefault();
@@ -21,9 +25,19 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true});
+
         })
         .catch(error => console.log(error))
     };
+
+    const handleGoogleSignIn = () => {
+      googleSignIn()
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => console.log(error))
+    }
 
   return (
     <div className="hero min-h-screen">
@@ -72,7 +86,7 @@ const Login = () => {
             <p className='text-lg font-semibold text-gray-600 text-center mt-6 mb-4'>Or Sign In with</p>
             <div className='flex gap-4 items-center justify-center'>
               <img className='w-14 h-9 rounded-full ' src={fbLogo} alt="" />
-              <img className='w-7 h-7 rounded-full ' src={googleLogo} alt="" />
+              <img onClick={handleGoogleSignIn} className='w-7 h-7 rounded-full ' src={googleLogo} alt="" />
               <img className='w-10 h-10 rounded-full ' src={gitLogo} alt="" />
             </div>
             <p className='my-4 text-center text-sm'>New to Car Doctors <Link className='text-orange-700 font-bold' to="/signUp">Sign Up</Link></p>

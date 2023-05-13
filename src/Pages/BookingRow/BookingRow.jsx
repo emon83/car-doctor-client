@@ -19,14 +19,16 @@ const BookingRow = ({booking, handleDelete, handleBookingConfirm}) => {
           </div>
       </td>
       <td>
-        {service}
+        <p className="text-lg font-bold">{service}</p>
+        <p className="text-gray-500">Color : Green</p>
+        <p className="text-gray-500">Size: S</p>
       </td>
-      <td>{date}</td>
-      <td>{price}</td>
+      <td className="font-bold">{date}</td>
+      <td className="font-bold">{price}</td>
       <th>
         {
-            status === 'confirm' ? <span className="font-bold text-primary">Confirmed</span> :
-            <button onClick={()=> handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
+            status === 'confirm' ? <button className="btn btn-outline btn-success btn-sm">Approved</button> :
+            <button onClick={()=> handleBookingConfirm(_id)} className=" btn bg-[#FF3811] hover:bg-[#d43718] btn-sm border-none">Pending</button>
             }
       </th>
     </tr>

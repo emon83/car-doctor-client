@@ -26,6 +26,9 @@ const ProductSection = () => {
                   ></Product>)
                 }
             </div>
+            <div className="text-center mt-[50px]">
+            <button className="btn btn-outline text-[#FF3811] hover:bg-[#d82f0d] border-orange-600 lg:text-base font-semibold">More Products</button>
+            </div>
         </div>
     );
 };

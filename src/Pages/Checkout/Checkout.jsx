@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import './Checkout.css'
 
 const Checkout = () => {
     const service = useLoaderData();
@@ -43,37 +44,31 @@ const Checkout = () => {
     };
     return (
         <div>
-            <h2 className="text-center text-3xl">Book Service: {title}</h2>
-      <div className="card-body">
+          <div className="serviceDetails_bg rounded-md mb-12 lg:mb-32">
+        <h2 className="text-5xl font-bold text-white pl-16 pt-28">Check Out</h2>
+        <p className="text-lg text-red-600 font-bold mt-2 pl-16 ml-1 ">Home-Check Out</p>
+      </div>
+      <div className="card-body h-[700px] lg:p-24">
         <form onSubmit={handleBookService}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="form-control">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input type="text" name="name" defaultValue={user?.displayName} placeholder="Your name"  className="input input-bordered" />
+          <input type="text" name="name" defaultValue={user?.displayName} placeholder="Your Name"  className="input input-bordered" />
         </div>
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Date</span>
-          </label>
-          <input type="date" name="date" placeholder="date" className="input input-bordered" />
+          <input type="date" name="date" placeholder="Enter Date" className="input input-bordered" />
         </div>
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input type="email" name="email" defaultValue={user?.email} placeholder="email" className="input input-bordered" />
+          <input type="email" name="email" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered" />
         </div>
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Due Amount</span>
-          </label>
-          <input type="text" defaultValue={"$" + price} name="price" className="input input-bordered" />
+          <input type="text" defaultValue={"$" + price} name="price" placeholder="Due Amount" className="input input-bordered" />
+        </div>
+        <div className="from-control">
+            <textarea name="message" placeholder="Message" id="" cols="30" rows="10" className="w-[100%] lg:w-[1030px] lg:h-72 p-6 rounded-lg"></textarea>
         </div>
             </div>
         <div className="form-control mt-6">
-          <input className="btn btn-primary btn-block" type="submit" value="Order Confirm" />
+          <input className="btn bg-[#FF3811] hover:bg-[#d43718] btn-block border-none lg:mt-6" type="submit" value="Order Confirm" />
         </div>
         </form>
       </div>

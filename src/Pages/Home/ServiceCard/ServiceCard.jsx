@@ -19,7 +19,7 @@ const ServiceCard = ({service}) => {
         <p className="text-lg font-bold text-orange-600">Price: ${price}</p>
       </div>
       <div>
-        <Link to={`/checkout/${_id}`}>
+        <Link to={`/serviceDetails/${_id}`}>
           <FaArrowRight className='text-orange-600 w-5 h-5 mt-16'/>
         </Link>
       </div>
